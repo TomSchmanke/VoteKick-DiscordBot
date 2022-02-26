@@ -38,5 +38,5 @@ node index.js
 
 3. Alternative to step 2: Deploy inside a screen session:
 ```bash
-screen -dms voteKickBot node index.js
+screen -dmS voteKickBot node index.js
 ```
