@@ -20,7 +20,7 @@ module.exports = {
       targetMemberChannel = await mandateMember.voice.channelId;
 
       if(mandateMemberChannel != targetMemberChannel || mandateMemberChannel == null || targetMemberChannel == null) {
-        interaction.reply("You have to be in the same voice channel as the user!")
+        interaction.reply({ content: "You have to be in the same voice channel as the user!", ephemeral: true });
       
       } else {
         interaction.reply({content: `A voting to kick the user ${targetUser} has been started. Vote will end in 30 seconds.`, fetchReply: true})
