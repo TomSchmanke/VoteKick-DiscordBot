@@ -17,8 +17,8 @@ module.exports = {
       targetMember = await guild.members.fetch(targetUser.id);
 
       mandateMemberChannel = await mandateMember.voice.channelId;
-      targetMemberChannel = await mandateMember.voice.channelId;
-
+      targetMemberChannel = await targetMember.voice.channelId;
+      
       if(mandateMemberChannel != targetMemberChannel || mandateMemberChannel == null || targetMemberChannel == null) {
         interaction.reply({ content: "You have to be in the same voice channel as the user!", ephemeral: true });
       
