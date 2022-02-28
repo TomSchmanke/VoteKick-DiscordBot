@@ -40,3 +40,7 @@ node index.js
 ```bash
 screen -dmS voteKickBot node index.js
 ```
+
+## Special thanks
+
+Special thanks to [Lukas Becker](https://github.com/lukas-becker) for support with the development and temporarly hosting of the bot.
