@@ -33,8 +33,19 @@ module.exports = {
             message.awaitReactions({reactionFilter, time: 30000})
               .then(collected => {
                 if(collected.get('👍').count > collected.get('👎').count) {
-                  message.reply(`${targetUser} you have won the voting and hence will be unmuted from now on.`);
-                  targetMember.voice.setMute(false, `${targetUser} won an unmute vote`);
+                  targetMember.voice.setMute(false, `${targetUser} won an unmute vote`).then(
+                    () => {
+                      message.reply(`${targetUser} you have won the voting and hence will be unmuted from now on.`);
+                    }
+                  ).catch(
+                    error => {
+                      console.error(error);
+                      if(error.code === 40032) {
+                        message.reply('It seems like the user left the channel during the voting 😦');
+                      } else {
+                        message.reply('Ups, an error occured during the voting. Maybe you can just try to redo the voting 😅');
+                      }
+                    });
                 } else {
                   message.reply(`${targetUser} you have lost the voting and hence stay muted.`);
                 }
