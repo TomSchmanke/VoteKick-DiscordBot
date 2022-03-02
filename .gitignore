@@ -131,3 +131,4 @@ dist
 
 #Configs
 config.json
+config-dev.json
