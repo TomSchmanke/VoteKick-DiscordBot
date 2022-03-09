@@ -35,19 +35,21 @@ module.exports = {
                 if(collected.get('👍').count > collected.get('👎').count) {
                   targetMember.voice.disconnect(true, `${targetUser} lost a kick vote`).then(
                     () => {
-                      message.reply(`${targetUser} you have lost the voting and hence will be kicked from the voice channel.`);
+                      message.edit(`${targetUser} you have lost the voting and hence will be kicked from the voice channel.`);
                     }
                   ).catch(
                     error => {
                       console.error(error);
                       if(error.code === 40032) {
-                        message.reply('It seems like the user left the channel during the voting 😦');
+                        message.edit('It seems like the user left the channel during the voting 😦');
+                      } else if (error.code === 10008) {
+                        console.log("Message deleted...")
                       } else {
-                        message.reply('Ups, an error occured during the voting. Maybe you can just try to redo the voting 😅');
+                        message.edit('Ups, an error occured during the voting. Maybe you can just try to redo the voting 😅');
                       }
                     });
                 } else {
-                  message.reply(`${targetUser} you have won the voting and hence are allowed to stay in the voice channel.`);
+                  message.edit(`${targetUser} you have won the voting and hence are allowed to stay in the voice channel.`);
                 }
               });        
             });
